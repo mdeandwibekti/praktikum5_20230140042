@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY Website 20210140042</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .welcome {
+            padding: 15px 20px;
+            background-color: white;
+        }
+        .nav-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: normal;
+        }
+        td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .logout {
+            color: #007bff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: inline-block;
+        }
+        .logout:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div style="padding: 20px; background: white; text-align: center;">
+    <h2>Selamat datang di aplikasi!</h2>
+</div>
+
+<div class="container">
+    <h3 style="padding: 15px 20px; background-color: #f1f1f1; margin: 0;">
+        Data Mahasiswa
+    </h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Jenis Kelamin</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Jika belum ada data -->
+        <tr th:if="${daftarMahasiswa.isEmpty()}">
+            <td colspan="4" class="no-data">Belum ada data</td>
+        </tr>
+
+        <!-- Loop data mahasiswa -->
+        <tr th:each="mhs, stat : ${daftarMahasiswa}">
+            <td th:text="${stat.count}"></td>
+            <td th:text="${mhs.nama}"></td>
+            <td th:text="${mhs.nim}"></td>
+            <td th:text="${mhs.jenisKelamin}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Logout -->
+<div style="padding: 15px 20px; background-color: white;">
+    <a href="/form" style="margin-right: 25px; color: #007bff; font-size: 16px; text-decoration: none;">
+        ➕ Input Data Mahasiswa
+    </a>
+    <a href="/logout" style="color: #dc3545; font-size: 16px; text-decoration: none;">
+        Logout
+    </a>
+</div>
+
+</body>
+</html>
