@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data Mahasiswa</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #007bff; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .btn { padding: 12px 25px; margin: 10px 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Input Data Mahasiswa</h2>
+
+    <form th:action="@{/simpan}" th:object="${user}" method="post">
+        <label>Nama Lengkap</label>
+        <input type="text" th:field="*{nama}" required>
+
+        <label>NIM</label>
+        <input type="text" th:field="*{nim}" required>
+
+        <label>Jenis Kelamin</label>
+        <select th:field="*{jenisKelamin}" required>
+            <option value="">-- Pilih --</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" class="btn btn-primary">Simpan Data</button>
+            <a href="/home" class="btn btn-secondary">Kembali ke Home</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
